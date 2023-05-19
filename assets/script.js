@@ -35,7 +35,16 @@ bulletArray[0].classList.add("dot_selected");
 
 let slideNumber = 1;
 
-let codeHtml = "";
+function insererContenu(classe, codeHtml) {
+	document.querySelector(classe).innerHTML = "";
+	document.querySelector(classe).innerHTML = codeHtml;
+}
+
+function creerCodeHtml (i) {
+	codeHtmlImg= `<div><img class='banner-img' src='./assets/images/slideshow/slide${i}.jpg'></div>`
+	codeHtmlTxt= "<p>" + slides[i-1].tagLine+ "</p>"
+}
+
 
 const arrowRight = document.querySelector(".arrow_right");
 arrowRight.addEventListener("click", () => {
@@ -46,14 +55,10 @@ arrowRight.addEventListener("click", () => {
 		bulletArray[slideNumber - 1].classList.add("dot_selected");
 		bulletArray[slideNumber - 2].classList.remove("dot_selected");
 
-		codeHtmlImg = "<div><img class='banner-img' src='./assets/images/slideshow/slide" + `${slideNumber}` + ".jpg'></div>";
-		codeHtmlTxt = "<p>" + slides[slideNumber - 1].tagLine + "</p>";
+		creerCodeHtml(slideNumber)
+		insererContenu(".banner-img", codeHtmlImg)
+		insererContenu(".banner-text", codeHtmlTxt)
 
-		document.querySelector(".banner-img").innerHTML = "";
-		document.querySelector(".banner-img").innerHTML = codeHtmlImg;
-
-		document.querySelector(".banner-text").innerHTML = "";
-		document.querySelector(".banner-text").innerHTML = codeHtmlTxt;
 
 	} else {
 		slideNumber = 1;
@@ -61,14 +66,9 @@ arrowRight.addEventListener("click", () => {
 		bulletArray[slideNumber - 1].classList.add("dot_selected");
 		bulletArray[3].classList.remove("dot_selected");
 
-		codeHtmlImg = "<div><img class='banner-img' src='./assets/images/slideshow/slide" + "1" + ".jpg'></div>";
-		codeHtmlTxt = "<p>" + slides[0].tagLine + "</p>";
-
-		document.querySelector(".banner-img").innerHTML = "";
-		document.querySelector(".banner-img").innerHTML = codeHtmlImg;
-
-		document.querySelector(".banner-text").innerHTML = "";
-		document.querySelector(".banner-text").innerHTML = codeHtmlTxt;
+		creerCodeHtml(1)
+		insererContenu(".banner-img", codeHtmlImg)
+		insererContenu(".banner-text", codeHtmlTxt)
 	}
 
 }
@@ -77,37 +77,26 @@ arrowRight.addEventListener("click", () => {
 const arrowLeft = document.querySelector(".arrow_left");
 arrowLeft.addEventListener("click", () => {
 
-	if (slideNumber > 1 ) {
+	if (slideNumber > 1) {
 		slideNumber--;
 
 		bulletArray[slideNumber - 1].classList.add("dot_selected");
 		bulletArray[slideNumber].classList.remove("dot_selected");
 
-		codeHtmlImg = "<div><img class='banner-img' src='./assets/images/slideshow/slide" + `${slideNumber}` + ".jpg'></div>";
-		codeHtmlTxt = "<p>" + slides[slideNumber - 1].tagLine + "</p>";
-
-		document.querySelector(".banner-img").innerHTML = "";
-		document.querySelector(".banner-img").innerHTML = codeHtmlImg;
-
-		document.querySelector(".banner-text").innerHTML = "";
-		document.querySelector(".banner-text").innerHTML = codeHtmlTxt;
-
+		creerCodeHtml(slideNumber)
+		insererContenu(".banner-img", codeHtmlImg)
+		insererContenu(".banner-text", codeHtmlTxt)
 
 	} else {
 
-		slideNumber = 4 ;
+		slideNumber = 4;
 
-		bulletArray[slideNumber-1].classList.add("dot_selected");
+		bulletArray[slideNumber - 1].classList.add("dot_selected");
 		bulletArray[0].classList.remove("dot_selected");
 
-		codeHtmlImg = "<div><img class='banner-img' src='./assets/images/slideshow/slide" + "4" + ".jpg'></div>";
-		codeHtmlTxt = "<p>" + slides[3].tagLine + "</p>";
-
-		document.querySelector(".banner-img").innerHTML = "";
-		document.querySelector(".banner-img").innerHTML = codeHtmlImg;
-
-		document.querySelector(".banner-text").innerHTML = "";
-		document.querySelector(".banner-text").innerHTML = codeHtmlTxt;
+		creerCodeHtml(slideNumber)
+		insererContenu(".banner-img", codeHtmlImg)
+		insererContenu(".banner-text", codeHtmlTxt)
 
 	}
 
@@ -116,4 +105,13 @@ arrowLeft.addEventListener("click", () => {
 );
 
 console.log(slides[slideNumber].tagLine)
+
+
+
+
+// codeHtmlImg = "<div><img class='banner-img' src='./assets/images/slideshow/slide" + `${slideNumber}` + ".jpg'></div>";
+// 		codeHtmlTxt = "<p>" + slides[slideNumber - 1].tagLine + "</p>";
+
+
+
 
