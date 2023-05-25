@@ -15,7 +15,7 @@ const slides = [
 		"image": "slide4.png",
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
-]
+];
 
 const bulletNumber = slides.length;
 
@@ -39,11 +39,13 @@ function insererContenu(classe, codeHtml) {
 	document.querySelector(classe).innerHTML = codeHtml;
 }
 
-function creerCodeHtml(i) {
-	codeHtmlImg = `<div><img class='banner-img' src='./assets/images/slideshow/slide${i}.jpg'></div>`
-	codeHtmlTxt = "<p>" + slides[i - 1].tagLine + "</p>"
-}
+let codeHtmlImg = "";
+let codeHtmlTxt = "";
 
+function creerCodeHtml(i) {
+	codeHtmlImg = `<div><img class='banner-img' src='./assets/images/slideshow/slide${i}.jpg'></div>`;
+	codeHtmlTxt = "<p>" + slides[i - 1].tagLine + "</p>";
+}
 
 const arrowRight = document.querySelector(".arrow_right");
 arrowRight.addEventListener("click", () => {
@@ -53,15 +55,12 @@ arrowRight.addEventListener("click", () => {
 
 		bulletArray[slideNumber - 1].classList.add("dot_selected");
 		bulletArray[slideNumber - 2].classList.remove("dot_selected");
-
 	} else {
 		slideNumber = 1;
 
 		bulletArray[slideNumber - 1].classList.add("dot_selected");
 		bulletArray[bulletNumber - 1].classList.remove("dot_selected");
-
 	}
-
 	creerCodeHtml(slideNumber);
 	insererContenu(".banner-img", codeHtmlImg);
 	insererContenu(".banner-text", codeHtmlTxt);
@@ -76,20 +75,16 @@ arrowLeft.addEventListener("click", () => {
 
 		bulletArray[slideNumber - 1].classList.add("dot_selected");
 		bulletArray[slideNumber].classList.remove("dot_selected");
-
-
 	} else {
 
 		slideNumber = bulletNumber;
 
 		bulletArray[slideNumber - 1].classList.add("dot_selected");
 		bulletArray[0].classList.remove("dot_selected");
-
 	}
-		creerCodeHtml(slideNumber)
-		insererContenu(".banner-img", codeHtmlImg)
-		insererContenu(".banner-text", codeHtmlTxt)
-
+	creerCodeHtml(slideNumber);
+	insererContenu(".banner-img", codeHtmlImg);
+	insererContenu(".banner-text", codeHtmlTxt);
 }
 );
 
